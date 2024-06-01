@@ -39,12 +39,30 @@ function addTodo(){
 
     delbtn.setAttribute("onclick","deltodo(this)")
 
+    
+    //creating edit button
+    var editbtn = document.createElement("button")
+    editbtn.innerHTML = "Edit"
+
+    //styling button
+    editbtn.style.color = "white"
+    editbtn.style.backgroundColor = "#6200EE"
+    editbtn.style.padding = "7px"
+    editbtn.style.fontSize = "15px"
+    editbtn.style.borderRadius = "5px"
+    editbtn.style.border = "none"
+
+
+    editbtn.setAttribute("onclick","editTodo(this)")
+
 
     var listpar = document.getElementById("listparent")
    
     listpar.appendChild(todo)
 
     todo.appendChild(delbtn)
+     todo.appendChild(editbtn)
+
 
     input.value = ""
    }
@@ -61,6 +79,14 @@ function delall(){
 function deltodo(deletebtn){
     var task = deletebtn.parentNode
     task.remove()
+}
+
+
+function editTodo(edbt){
+    
+    var newval =  prompt("Enter new task",edbt.parentNode.firstChild.nodeValue)
+    edbt.parentNode.firstChild.nodeValue = newval
+
 }
 
 
